@@ -1,8 +1,8 @@
 const express = require('express');
-const axios = require('axios');
 const app = express();
-const port = process.env.PORT || 3000;
+const axios = require('axios');
 const fontScrapeService = require('./fontScrapeService');
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -17,9 +17,7 @@ app.get('/', (req, res) => {
             let htmlRes = resp.data;
             fontScrapeService(htmlRes);
         }).catch(e => `uh oh, ${e}`);
-    }
-    else {
+    } else {
         res.send("Please input a URL to scrape")
     }
-
 });
