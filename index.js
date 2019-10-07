@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
             method: 'get',
             url
         }).then(resp => {
-            let htmlRes = resp.data;
-            fontScrapeService(htmlRes);
+            let data = resp.data;
+            fontScrapeService(data);
         }).catch(e => `uh oh, ${e}`);
     } else {
         res.send("Please input a URL to scrape")
