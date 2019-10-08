@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const bodyParser = require('body-parser');
-const fontScrapeService = require('./fontScrapeService');
 const port = process.env.PORT || 3000;
+const FontScrapeService = require("./fontScrapeService");
+const fontScrapeService = new FontScrapeService();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -15,13 +16,11 @@ app.post('/parseFont', (req, res) => {
     } else {
         axios.get(url).then(resp => {
             let data = resp.data;
-           return fontScrapeService(data);
+            return fontScrapeService.allLinksParse(data);
         }).then(resp => {
             let results = {fonts: resp};
-            console.log('results', results);
             res.send(results);
-        })
-    .catch(e => `uh oh, ${e}`);
+        }).catch(e => res.send(`Unable to parse. Please input another url: ${e}`));
     }
 });
 
