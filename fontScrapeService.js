@@ -14,8 +14,8 @@ async function fontScrapeService(htmlRes) {
         }
     }
 
-    let res = await Promise.all(css);
-    let matches = dataParse(res.toString());
+    let finishedCSS = await Promise.all(css);
+    let matches = dataParse(finishedCSS.toString());
     let noDupes = new Set(matches);
     return Array.from(noDupes);
 

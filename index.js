@@ -18,8 +18,7 @@ app.post('/parseFont', (req, res) => {
            return fontScrapeService(data);
         }).then(resp => {
             let results = {fonts: resp};
-
-            console.log('resy', results);
+            console.log('results', results);
             res.send(results);
         })
     .catch(e => `uh oh, ${e}`);
