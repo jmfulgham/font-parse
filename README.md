@@ -1,4 +1,4 @@
-#Font Family Scraper
+# Font Family Scraper
 
 This was a code challenge given to me to scrape a webpage and its related files to find all fonts being used on the site.
 
