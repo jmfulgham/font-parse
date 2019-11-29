@@ -1,8 +1,8 @@
-# Webflow Font Family Scraper
+#Font Family Scraper
 
-Given a URL input, scrape the webpage and its related files to find all fonts being used on the site.
+This was a code challenge given to me to scrape a webpage and its related files to find all fonts being used on the site.
 
-### Technologies to use
+### Technologies I used
 
 - node.js
 - express.js
@@ -23,5 +23,3 @@ Run `npm i` to download all dependencies. Then, run either `npm start` or `nodem
 
 You will receive a JSON response with an array of fonts used on the requested URL.
 
-
-Happy hunting!
