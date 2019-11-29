@@ -2,7 +2,7 @@ const jsdom = require("jsdom");
 const {JSDOM} = jsdom;
 const axios = require('axios');
 let allFonts;
-
+// let fonts =[ []]
 class FontScrapeService {
 
     async allLinksParse(htmlRes) {

@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.post('/parseFont', (req, res) => {
     let url = req.body.url;
     if (!url) {
-        res.send("Please input a URL to scrape")
+        res.status(404).send("Please input a URL to scrape")
     } else {
         axios.get(url).then(resp => {
             let data = resp.data;
@@ -20,7 +20,7 @@ app.post('/parseFont', (req, res) => {
         }).then(resp => {
             let results = {fonts: resp};
             res.send(results);
-        }).catch(e => res.send(`Unable to parse. Please input another url: ${e}`));
+        }).catch(e => res.status(400).send(`Unable to parse. Please input another url: ${e}`));
     }
 });
 
