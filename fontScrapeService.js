@@ -2,7 +2,7 @@ const jsdom = require("jsdom");
 const {JSDOM} = jsdom;
 const axios = require('axios');
 let allFonts;
-// let fonts =[ []]
+
 class FontScrapeService {
 
     async allLinksParse(htmlRes) {
@@ -26,12 +26,14 @@ class FontScrapeService {
     dataParse(data) {
         let fonts = [];
         let fontFam = data.match(/(font-family\:.*?\;)/gm);
+        //what happens if the url isn't to this format? Need to switch to req.query.url or something
         for (let style in fontFam) {
             if (fontFam[style].includes("font-family")) {
                 const fontFamilyValue = fontFam[style].split(':');
                 fonts.push(fontFamilyValue[1]);
             }
         }
+
         let noDupes = new Set(fonts);
         allFonts = Array.from(noDupes);
         return allFonts;
