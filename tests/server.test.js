@@ -1,7 +1,7 @@
 const nock = require('nock');
 const chai = require('chai');
-const chaiNock = require('chai-nock');
 const { expect } = require('chai');
+
 chai.use(chaiNock);
 
 

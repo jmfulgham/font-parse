@@ -12,7 +12,7 @@ fonts being used on the site.
 
 ### Details
 
-Run `npm i` to download all dependencies. Then, run either `npm start` or `nodemon index.js` to run the app. 
+Run `npm i` to download all dependencies. Then, run either `npm start` or `nodemon server.js` to run the app. 
 
 
 #### POST /parseFonts
