@@ -5,6 +5,7 @@ let allFonts;
 
 class FontScrapeService {
 
+    // find every style css stylesheet link, get its data
     async allLinksParse(htmlRes) {
         const dom = new JSDOM(htmlRes);
         const document = dom.window.document;
@@ -23,10 +24,10 @@ class FontScrapeService {
         return allFonts;
     }
 
+    //find any font families from the css stylesheet links and return them
     dataParse(data) {
         let fonts = [];
         let fontFam = data.match(/(font-family\:.*?\;)/gm);
-        //what happens if the url isn't to this format? Need to switch to req.query.url or something
         for (let style in fontFam) {
             if (fontFam[style].includes("font-family")) {
                 const fontFamilyValue = fontFam[style].split(':');
@@ -39,6 +40,7 @@ class FontScrapeService {
         return allFonts;
     }
 
+    //find any inline style elements with font families included
     styleSheetParse(document) {
         let style = document.getElementsByTagName('style');
         if (!style) {
