@@ -1,15 +1,20 @@
 const nock = require('nock');
 const chai = require('chai');
 const { expect } = require('chai');
-
-chai.use(chaiNock);
+const chaiHttp = require('chai-http');
+const server = require('../server');
+chai.use(chaiHttp);
 
 
 describe('Server Test', ()=>{
-  it('Should receive a response from the server when query param is set', (done)=>{
-    let url = nock('http://test.com').get('/parseFonts?url=www.test.com').reply(200, {fonts: []});
-
-    expect(url).to.have.been.requestedWith({ url: '' });
-    done()
+  it('Should receive a 404 response from the server when no query param is set', (done) => {
+    chai.request(server)
+        .get('/parseFonts?url=')
+        .end((err, res) => {
+          console.log(res);
+          expect(res.status.equal(404));
+          res.body.should.be.a('string');
+          done();
+        });
   })
 });
