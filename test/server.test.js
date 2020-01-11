@@ -11,7 +11,7 @@ describe('Server Test', ()=>{
     chai.request(server)
         .get('/parseFonts?url=')
         .end((err, res) => {
-          console.log(res);
+          // console.log(res);
           expect(res.status.equal(404));
           res.body.should.be.a('string');
           done();
