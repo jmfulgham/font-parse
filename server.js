@@ -16,8 +16,7 @@ app.get('/parseFonts', (req, res) => {
     } else {
         axios.get(url).then(resp => {
             const data = resp.data;
-            let fontScrapeResponse = fontScrapeService.allLinksParse(data);
-            return fontScrapeResponse;
+            return fontScrapeService.allLinksParse(data);
         }).then(resp => {
             let results = {fonts: resp};
             res.send(results);
