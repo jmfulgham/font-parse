@@ -33,4 +33,15 @@ describe('Server Test', () => {
             });
     });
 
+    it("should return a 400 when url is incomplete", ()=>{
+        return chai.request(server)
+            .get('/parseFonts?url=www.test.com')
+            .then(function (res) {
+                res.should.have.status(400);
+                expect(res.text).to.equal("Error: Error: connect ECONNREFUSED 127.0.0.1:80. Please make sure your url includes https://...")
+
+            });
+
+    });
+
 });

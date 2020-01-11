@@ -20,7 +20,7 @@ app.get('/parseFonts', (req, res) => {
         }).then(resp => {
             let results = {fonts: resp};
             res.send(results);
-        }).catch(e => res.status(400).send(`Error: ${e}`));
+        }).catch(e => res.status(400).send(`Error: ${e}. Please make sure your url includes https://...`));
     }
 });
 
