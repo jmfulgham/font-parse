@@ -4,10 +4,12 @@ const axios = require('axios');
 let allFonts;
 
 class FontScrapeService {
+    constructor(){
+    }
 
     // find every style css stylesheet link, get its data
-    async allLinksParse(htmlRes) {
-        const dom = new JSDOM(htmlRes);
+    async allLinksParse(data) {
+        const dom = new JSDOM(data);
         const document = dom.window.document;
         this.styleSheetParse(document);
         let links = document.getElementsByTagName('link');
@@ -25,7 +27,7 @@ class FontScrapeService {
     }
 
     //find any font families from the css stylesheet links and return them
-    dataParse(data) {
+     dataParse(data) {
         let fonts = [];
         let fontFam = data.match(/(font-family\:.*?\;)/gm);
         for (let style in fontFam) {

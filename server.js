@@ -1,26 +1,23 @@
 const express = require('express');
 const axios = require('axios');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const port = 3000;
 const FontScrapeService = require("./fontScrapeService");
 const fontScrapeService = new FontScrapeService();
 const app = express();
 
-// app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.get('/parseFonts', (req, res) => {
-    let url = req.query.url;
-    console.log(url);
+    const url = req.query.url;
     if (!url) {
         res.status(404).send("Please input a URL to scrape")
     } else {
-        //can this axios.get be refactored into the service?
         axios.get(url).then(resp => {
-            let data = resp.data;
-            return fontScrapeService.allLinksParse(data);
+            const data = resp.data;
+            let fontScrapeResponse = fontScrapeService.allLinksParse(data);
+            return fontScrapeResponse;
         }).then(resp => {
             let results = {fonts: resp};
             res.send(results);
