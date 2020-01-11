@@ -15,8 +15,8 @@ fonts being used on the site.
 Run `npm i` to download all dependencies. Then, run either `npm start` or `nodemon server.js` to run the app. 
 
 
-#### POST /parseFonts
-  Make your `POST` request to `localhost:3000/parseFonts?url=YOUR_URL_HERE`
+#### GET /parseFonts
+  Make your `GET` request to `localhost:3000/parseFonts?url=https://YOUR_URL_HERE`
  
   - Response: `{ fonts: [ ... ] }`
 
