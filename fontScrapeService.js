@@ -33,7 +33,7 @@ class FontScrapeService {
         for (let style in fontFam) {
             if (fontFam[style].includes("font-family")) {
                 const fontFamilyValue = fontFam[style].split(':');
-                fonts.push(fontFamilyValue[1]);
+                fonts.push(fontFamilyValue[1].trim().replace(';', ''));
             }
         }
 
@@ -54,6 +54,7 @@ class FontScrapeService {
                     this.dataParse(styleString);
                 }
             }
+            return allFonts;
         }
     }
 }
